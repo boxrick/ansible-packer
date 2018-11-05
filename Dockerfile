@@ -11,15 +11,14 @@ RUN apk --no-cache add sudo openssh-client python                  \
     apk --no-cache add --virtual build-dependencies python-dev     \
     libffi-dev openssl-dev build-base
 
-# Install ansible by standard means if 
+# Install ansible by standard means if
 #RUN apk update                                                 && \
 #    apk add --no-cache ansible openssh-client                  && \
 #    rm -rf /tmp/*                                              && \
 #    rm -rf /var/cache/apk/*
 
-RUN pip install ansible                                         && \
-    apk del build-dependencies sudo python-dev libffi-dev          \
-    openssl-dev build-base py-pip                               && \
+RUN pip install ansible                                        && \
+    apk del build-dependencies                                 && \
     rm -rf /var/cache/apk/*
 
 # Confirm Ansible installed and working
