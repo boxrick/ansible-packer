@@ -17,8 +17,9 @@ RUN apk --no-cache add sudo openssh-client python                  \
 #    rm -rf /tmp/*                                              && \
 #    rm -rf /var/cache/apk/*
 
-RUN pip install ansible                                        && \
-    apk del build-dependencies                                 && \
+RUN pip install ansible                                         && \
+    apk del build-dependencies python-dev libffi-dev               \
+    openssl-dev build-base py-pip                               && \
     rm -rf /var/cache/apk/*
 
 # Confirm Ansible installed and working
